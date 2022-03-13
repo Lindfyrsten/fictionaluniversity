@@ -3908,8 +3908,6 @@ const mobileMenu = new _modules_MobileMenu__WEBPACK_IMPORTED_MODULE_2__["default
 const heroSlider = new _modules_HeroSlider__WEBPACK_IMPORTED_MODULE_3__["default"]();
 const googleMap = new _modules_GoogleMap__WEBPACK_IMPORTED_MODULE_4__["default"]();
 const search = new _modules_Search__WEBPACK_IMPORTED_MODULE_5__["default"]();
-jquery__WEBPACK_IMPORTED_MODULE_1___default()('#banner_button').html('Test');
-const cars = ['Volvo', 'Saab', 'Honda', 'Suzuki'];
 
 /***/ }),
 
@@ -4124,7 +4122,7 @@ class Search {
       this.resultsDiv.html(`
                 <h2 class="search-overlay__section-title">General Information</h2>
                 ${combinedResults.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>'}
-                    ${combinedResults.map(item => `<li><a href="${item.link}">${item.title.rendered}</a> by ${item.authorName}</li>`).join('')}
+                    ${combinedResults.map(item => `<li><a href="${item.link}">${item.title.rendered}</a>${item.type == 'post' ? `by ${item.authorName}` : ''}</li>`).join('')}
                 ${combinedResults.length ? '</ul>' : ''}
                 `);
       this.isSpinnerVisible = false;

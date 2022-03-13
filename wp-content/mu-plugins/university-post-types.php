@@ -64,7 +64,7 @@ function university_post_types(){
         'singular_name' => 'Professor'
       ),
       'menu_icon' => 'dashicons-welcome-learn-more',
-      'show_in_rest' => false
+      'show_in_rest' => true
     ));
 }
 
