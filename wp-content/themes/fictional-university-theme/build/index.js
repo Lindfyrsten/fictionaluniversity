@@ -3890,10 +3890,13 @@ var Glide = /*#__PURE__*/function (_Core) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/style.scss */ "./css/style.scss");
-/* harmony import */ var _modules_MobileMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/MobileMenu */ "./src/modules/MobileMenu.js");
-/* harmony import */ var _modules_HeroSlider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/HeroSlider */ "./src/modules/HeroSlider.js");
-/* harmony import */ var _modules_GoogleMap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/GoogleMap */ "./src/modules/GoogleMap.js");
-/* harmony import */ var _modules_Search__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/Search */ "./src/modules/Search.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _modules_MobileMenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/MobileMenu */ "./src/modules/MobileMenu.js");
+/* harmony import */ var _modules_HeroSlider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/HeroSlider */ "./src/modules/HeroSlider.js");
+/* harmony import */ var _modules_GoogleMap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/GoogleMap */ "./src/modules/GoogleMap.js");
+/* harmony import */ var _modules_Search__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/Search */ "./src/modules/Search.js");
+
  // Our modules / classes
 
 
@@ -3901,10 +3904,12 @@ __webpack_require__.r(__webpack_exports__);
 
  // Instantiate a new object using our modules/classes
 
-const mobileMenu = new _modules_MobileMenu__WEBPACK_IMPORTED_MODULE_1__["default"]();
-const heroSlider = new _modules_HeroSlider__WEBPACK_IMPORTED_MODULE_2__["default"]();
-const googleMap = new _modules_GoogleMap__WEBPACK_IMPORTED_MODULE_3__["default"]();
-const search = new _modules_Search__WEBPACK_IMPORTED_MODULE_4__["default"]();
+const mobileMenu = new _modules_MobileMenu__WEBPACK_IMPORTED_MODULE_2__["default"]();
+const heroSlider = new _modules_HeroSlider__WEBPACK_IMPORTED_MODULE_3__["default"]();
+const googleMap = new _modules_GoogleMap__WEBPACK_IMPORTED_MODULE_4__["default"]();
+const search = new _modules_Search__WEBPACK_IMPORTED_MODULE_5__["default"]();
+jquery__WEBPACK_IMPORTED_MODULE_1___default()('#banner_button').html('Test');
+const cars = ['Volvo', 'Saab', 'Honda', 'Suzuki'];
 
 /***/ }),
 
@@ -3917,13 +3922,13 @@ const search = new _modules_Search__WEBPACK_IMPORTED_MODULE_4__["default"]();
 __webpack_require__.r(__webpack_exports__);
 class GMap {
   constructor() {
-    document.querySelectorAll(".acf-map").forEach(el => {
+    document.querySelectorAll('.acf-map').forEach(el => {
       this.new_map(el);
     });
   }
 
   new_map($el) {
-    var $markers = $el.querySelectorAll(".marker");
+    var $markers = $el.querySelectorAll('.marker');
     var args = {
       zoom: 16,
       center: new google.maps.LatLng(0, 0),
@@ -3942,7 +3947,7 @@ class GMap {
 
 
   add_marker($marker, map) {
-    var latlng = new google.maps.LatLng($marker.getAttribute("data-lat"), $marker.getAttribute("data-lng"));
+    var latlng = new google.maps.LatLng($marker.getAttribute('data-lat'), $marker.getAttribute('data-lng'));
     var marker = new google.maps.Marker({
       position: latlng,
       map: map
@@ -3955,7 +3960,7 @@ class GMap {
         content: $marker.innerHTML
       }); // show info window when marker is clicked
 
-      google.maps.event.addListener(marker, "click", function () {
+      google.maps.event.addListener(marker, 'click', function () {
         infowindow.open(map, marker);
       });
     }
@@ -3999,21 +4004,21 @@ __webpack_require__.r(__webpack_exports__);
 
 class HeroSlider {
   constructor() {
-    if (document.querySelector(".hero-slider")) {
+    if (document.querySelector('.hero-slider')) {
       // count how many slides there are
-      const dotCount = document.querySelectorAll(".hero-slider__slide").length; // Generate the HTML for the navigation dots
+      const dotCount = document.querySelectorAll('.hero-slider__slide').length; // Generate the HTML for the navigation dots
 
-      let dotHTML = "";
+      let dotHTML = '';
 
       for (let i = 0; i < dotCount; i++) {
         dotHTML += `<button class="slider__bullet glide__bullet" data-glide-dir="=${i}"></button>`;
       } // Add the dots HTML to the DOM
 
 
-      document.querySelector(".glide__bullets").insertAdjacentHTML("beforeend", dotHTML); // Actually initialize the glide / slider script
+      document.querySelector('.glide__bullets').insertAdjacentHTML('beforeend', dotHTML); // Actually initialize the glide / slider script
 
-      var glide = new _glidejs_glide__WEBPACK_IMPORTED_MODULE_0__["default"](".hero-slider", {
-        type: "carousel",
+      var glide = new _glidejs_glide__WEBPACK_IMPORTED_MODULE_0__["default"]('.hero-slider', {
+        type: 'carousel',
         perView: 1,
         autoplay: 3000
       });
@@ -4036,19 +4041,19 @@ class HeroSlider {
 __webpack_require__.r(__webpack_exports__);
 class MobileMenu {
   constructor() {
-    this.menu = document.querySelector(".site-header__menu");
-    this.openButton = document.querySelector(".site-header__menu-trigger");
+    this.menu = document.querySelector('.site-header__menu');
+    this.openButton = document.querySelector('.site-header__menu-trigger');
     this.events();
   }
 
   events() {
-    this.openButton.addEventListener("click", () => this.openMenu());
+    this.openButton.addEventListener('click', () => this.openMenu());
   }
 
   openMenu() {
-    this.openButton.classList.toggle("fa-bars");
-    this.openButton.classList.toggle("fa-window-close");
-    this.menu.classList.toggle("site-header__menu--active");
+    this.openButton.classList.toggle('fa-bars');
+    this.openButton.classList.toggle('fa-window-close');
+    this.menu.classList.toggle('site-header__menu--active');
   }
 
 }
@@ -4072,11 +4077,11 @@ class Search {
   // 1. describe and create/intiate our object
   constructor() {
     this.addSearchHTML();
-    this.openButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".js-search-trigger");
-    this.closeButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-overlay__close");
-    this.searchOverlay = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-overlay");
-    this.searchField = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-term");
-    this.resultsDiv = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-overlay__results");
+    this.openButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-search-trigger');
+    this.closeButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.search-overlay__close');
+    this.searchOverlay = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.search-overlay');
+    this.searchField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#search-term');
+    this.resultsDiv = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#search-overlay__results');
     this.events();
     this.isOverlayOpen = false;
     this.isSpinnerVisible = false;
@@ -4086,10 +4091,10 @@ class Search {
 
 
   events() {
-    this.openButton.on("click", this.openOverlay.bind(this));
-    this.closeButton.on("click", this.closeOverlay.bind(this));
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("keydown", this.keyPressDispatcher.bind(this));
-    this.searchField.on("keyup", this.searchInput.bind(this));
+    this.openButton.on('click', this.openOverlay.bind(this));
+    this.closeButton.on('click', this.closeOverlay.bind(this));
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('keydown', this.keyPressDispatcher.bind(this));
+    this.searchField.on('keyup', this.searchInput.bind(this));
   } // 3. methods (function, action)
 
 
@@ -4129,7 +4134,7 @@ class Search {
   }
 
   keyPressDispatcher(e) {
-    if (e.keyCode == 83 && !this.isOverlayOpen && !jquery__WEBPACK_IMPORTED_MODULE_0___default()("input, textarea").is(':focus')) {
+    if (e.keyCode == 83 && !this.isOverlayOpen && !jquery__WEBPACK_IMPORTED_MODULE_0___default()('input, textarea').is(':focus')) {
       this.openOverlay();
     }
 
@@ -4139,16 +4144,16 @@ class Search {
   }
 
   openOverlay() {
-    this.searchOverlay.addClass("search-overlay--active");
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").addClass("body-no-scroll");
+    this.searchOverlay.addClass('search-overlay--active');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').addClass('body-no-scroll');
     this.searchField.val('');
     setTimeout(() => this.searchField.focus(), 301);
     this.isOverlayOpen = true;
   }
 
   closeOverlay() {
-    this.searchOverlay.removeClass("search-overlay--active");
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").removeClass("body-no-scroll");
+    this.searchOverlay.removeClass('search-overlay--active');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').removeClass('body-no-scroll');
     this.isOverlayOpen = false;
   }
 
