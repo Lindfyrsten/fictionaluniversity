@@ -3897,8 +3897,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_GoogleMap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/GoogleMap */ "./src/modules/GoogleMap.js");
 /* harmony import */ var _modules_Search__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/Search */ "./src/modules/Search.js");
 /* harmony import */ var _modules_MyNotes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/MyNotes */ "./src/modules/MyNotes.js");
+/* harmony import */ var _modules_Like__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/Like */ "./src/modules/Like.js");
 
  // Our modules / classes
+
 
 
 
@@ -3911,6 +3913,7 @@ const heroSlider = new _modules_HeroSlider__WEBPACK_IMPORTED_MODULE_3__["default
 const googleMap = new _modules_GoogleMap__WEBPACK_IMPORTED_MODULE_4__["default"]();
 const search = new _modules_Search__WEBPACK_IMPORTED_MODULE_5__["default"]();
 const myNotes = new _modules_MyNotes__WEBPACK_IMPORTED_MODULE_6__["default"]();
+const like = new _modules_Like__WEBPACK_IMPORTED_MODULE_7__["default"]();
 
 /***/ }),
 
@@ -4030,6 +4033,51 @@ class HeroSlider {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (HeroSlider);
+
+/***/ }),
+
+/***/ "./src/modules/Like.js":
+/*!*****************************!*\
+  !*** ./src/modules/Like.js ***!
+  \*****************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+
+class Like {
+  constructor() {
+    this.events();
+  }
+
+  events() {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(".like-box").on('click', this.clickDispatcher.bind(this));
+  } //methods
+
+
+  clickDispatcher(e) {
+    var currentLikeBox = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).closest('.like-box');
+
+    if (currentLikeBox.data('exists') == 'yes') {
+      this.deleteLike();
+    } else {
+      this.createLike();
+    }
+  }
+
+  createLike() {
+    alert('create test msg'); // $('.like-box').data('exists') = 'yes';
+  }
+
+  deleteLike() {
+    alert('delete test msg'); // $('.like-box').data('exists') = 'no';
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Like);
 
 /***/ }),
 
